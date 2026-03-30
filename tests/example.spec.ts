@@ -16,3 +16,13 @@ test('get started link', async ({ page }) => {
   // Expects page to have a heading with the name of Installation.
   await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
 });
+
+test('login test', async ({ page }) => {
+  await page.goto('https://example.com');
+  await page.getByRole('link', {name: 'Learn more'}) // wrong locator
+});
+
+// test('api test', async ( {request}) => {
+//   const res = await request.get('/api/users');
+//   expect(res.status()).toBe(200);
+// });
