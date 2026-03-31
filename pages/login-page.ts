@@ -12,11 +12,11 @@ export class LoginPage {
     
     constructor(page: Page){
         this.page = page;
-        this.userNameInput = page.getByPlaceholder('Username');
-        this.passwordInput = page.getByPlaceholder('Password');
+        this.userNameInput = page.getByRole('textbox', {name : 'Username'} );
+        this.passwordInput = page.getByRole('textbox', {name : 'Password'});
         this.loginButton = page.getByRole('button', { name: 'Login'});
         this.dashboardHeading = page.getByRole('heading', { name : 'Dashboard'});
-        this.errorMessage = page.locator('.orangehrm-login-error').filter({hasText : 'Invalid credentials'});
+        this.errorMessage = page.getByRole('alert').locator('div').filter({ hasText : /^Invalid credentials$/ });
     }
 
     async goTo() {
